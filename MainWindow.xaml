@@ -1,0 +1,41 @@
+﻿<Window x:Class="BAGMON.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BAGMON"
+        mc:Ignorable="d"
+        Title="MAGMON" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <ToolBarPanel DockPanel.Dock="Top">
+                <ToolBarTray ToolBarTray.IsLocked="True" VerticalAlignment="Top">
+                    <ToolBar Name="Main">
+                        <Button Content="Refresh" Click="Button_Click"/>
+                        <Label>Server:</Label>
+                        <ComboBox ItemsSource="{Binding Servers}"
+                                  SelectedItem="{Binding SelectedServer}"
+                              DisplayMemberPath="Name"
+                              Width="120"/>
+                        <Label>Character:</Label>
+                        <ComboBox x:Name="CharSelect" ItemsSource="{Binding Characters}" SelectedItem="{Binding SelectedCharacter}" DisplayMemberPath="Name" Width="120"/>
+                        <Button Content="All Characters" Click="Button_Click_1"/>
+                    </ToolBar>
+                    <ToolBar Name="Search">
+                        <Label>Search:</Label>
+                        <TextBox x:Name="SearchFilter" Width="120" TextChanged="TextBox_TextChanged"></TextBox>
+                    </ToolBar>
+                </ToolBarTray>
+            </ToolBarPanel>
+            <Grid>
+                <Label HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="125">
+                    <Label x:Name="CharName" Content="Label"/>
+                </Label>
+                <DataGrid ItemsSource="{Binding Items}"/>
+            </Grid>
+        </DockPanel>
+
+
+
+    </Grid>
+</Window>
